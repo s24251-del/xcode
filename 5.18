@@ -1,0 +1,69 @@
+//
+//ContentView.swift
+//  MyJanken
+//
+//  Created by MacST13 on 2026/05/13.
+//
+
+import SwiftUI
+
+struct ContentView: View {
+    //じゃんけんの結果を格納する変数 (0=初期画面、1=グー、2=チョキ、3=パー）
+    ＠State var jankenNumber = 0
+    
+    var body: some View {
+        //垂直にレイアウト(縦方向にレイアウト)
+        VStack{
+            
+            //じゃんけんの数字が0だったら
+            if jankenNumber == 0{
+                //初期画面のテキストを表示
+                Text("これからじゃんけんをします！")
+            } else if jankenNumber == 1{
+                //じゃんけんの数字が1だったら、グーの画像を指定
+                //グー画像を指定
+                Image(.gu)
+                //サイズを指定
+                    .resizable()
+                //画面に収まるように、アスペクト比(縦横比)を維持する指定
+                    .scaledToFit()
+                //じゃんけんの種類を指定
+                Text("グー")
+            } else if jankenNumber == 2{
+                //じゃんけんの数字が2だったら、チョキの画像を指定
+                //チョキ画像を指定
+                Image(.choki)
+                //サイズを指定
+                    .resizable()
+                //画面に収まるように、アスペクト比(縦横比)を維持する指定
+                    .scaledToFit()
+                //じゃんけんの種類を指定
+                Text("チョキ")
+            } else {
+                //じゃんけんの数字が[1] 、　[2] 以外だったら、パーの画像を指定
+                //パー画像を指定
+                Image(.pa)
+                //サイズを指定
+                    .resizable()
+                //画面に収まるように、アスペクト比(縦横比)を維持する指定
+                    .scaledToFit()
+                //じゃんけんの種類を指定
+                Text("パー")
+                
+            } //ifここまで
+            
+            Button {
+                //次のジャンケンへ
+                jankenNumber = jankenNumber + 1
+            } label: {
+                //Buttonに表示する文字を指定
+                Text("じゃんけんをする！")
+            }//「じゃんけんをする！」ボタンここまで
+
+        }//VStackここまで
+    }//bodyここまで
+}//ContenViewここまで
+
+#Preview {
+    ContentView()
+}
